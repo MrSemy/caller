@@ -1,0 +1,78 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TEST_button.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="always_hide" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="add_buttons" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="use_hotkeys" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="button1_name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Семён</Value>
+    </Setting>
+    <Setting Name="button1_number" Type="System.String" Scope="User">
+      <Value Profile="(Default)">792911</Value>
+    </Setting>
+    <Setting Name="button2_name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Андрей</Value>
+    </Setting>
+    <Setting Name="button2_number" Type="System.String" Scope="User">
+      <Value Profile="(Default)">792966</Value>
+    </Setting>
+    <Setting Name="button3_name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Александр</Value>
+    </Setting>
+    <Setting Name="button3_number" Type="System.String" Scope="User">
+      <Value Profile="(Default)">792911</Value>
+    </Setting>
+    <Setting Name="button4_name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Михаил</Value>
+    </Setting>
+    <Setting Name="button4_number" Type="System.String" Scope="User">
+      <Value Profile="(Default)">792966</Value>
+    </Setting>
+    <Setting Name="button5_name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Анна</Value>
+    </Setting>
+    <Setting Name="button5_number" Type="System.String" Scope="User">
+      <Value Profile="(Default)">792911</Value>
+    </Setting>
+    <Setting Name="button6_name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Дмитрий</Value>
+    </Setting>
+    <Setting Name="button6_number" Type="System.String" Scope="User">
+      <Value Profile="(Default)">792966</Value>
+    </Setting>
+    <Setting Name="hotkey" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">T</Value>
+    </Setting>
+    <Setting Name="button7_name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Владимир</Value>
+    </Setting>
+    <Setting Name="button7_number" Type="System.String" Scope="User">
+      <Value Profile="(Default)">792911</Value>
+    </Setting>
+    <Setting Name="button8_name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Павел</Value>
+    </Setting>
+    <Setting Name="button8_number" Type="System.String" Scope="User">
+      <Value Profile="(Default)">792966</Value>
+    </Setting>
+    <Setting Name="button9_name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Галина</Value>
+    </Setting>
+    <Setting Name="button9_number" Type="System.String" Scope="User">
+      <Value Profile="(Default)">792911</Value>
+    </Setting>
+    <Setting Name="button10_name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Алексей</Value>
+    </Setting>
+    <Setting Name="button10_number" Type="System.String" Scope="User">
+      <Value Profile="(Default)">792966</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
