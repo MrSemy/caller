@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Windows;
 //using System.Net.Http;
 using System.Net;
 using System.Configuration;
@@ -13,11 +14,13 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
+using System.Runtime.InteropServices;
 
 namespace TEST_button
 {
     public partial class Form2 : Form
     {
+
         bool expectation;
         bool form3_opened = false;
         bool form1_opened = false;
@@ -153,7 +156,7 @@ namespace TEST_button
                     Program.f3.Invalidate();
                     expectation = false;
                 }
-                button4.BackgroundImage = Image.FromFile(@"C:\Users\User\source\repos\TEST_button\TEST_button\add_but2.png");
+                button4.BackgroundImage = Image.FromFile(@"C:\Users\Semen\Documents\проекты\TEST_button\TEST_button\add_but2.png");
                 button4.BackgroundImageLayout = ImageLayout.Zoom;
                 form3_opened = true;
             }
@@ -167,7 +170,7 @@ namespace TEST_button
                     Program.f3.Invalidate();
                     expectation = false;
                 }
-                button4.BackgroundImage = Image.FromFile(@"C:\Users\User\source\repos\TEST_button\TEST_button\add_but.png");
+                button4.BackgroundImage = Image.FromFile(@"C:\Users\Semen\Documents\проекты\TEST_button\TEST_button\add_but.png");
                 button4.BackgroundImageLayout = ImageLayout.Zoom;
                 form3_opened = false;
             }
@@ -193,7 +196,7 @@ namespace TEST_button
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            this.Width = 232;
+            //this.Width = 232;
             this.Height = 32;
 
         }

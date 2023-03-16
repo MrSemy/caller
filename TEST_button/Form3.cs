@@ -38,7 +38,7 @@ namespace TEST_button
             //Верхний левый угол экрана
             Point pt = Screen.PrimaryScreen.WorkingArea.Location;
             //Перенос в нижний правый угол экрана без панели задач
-            pt.Offset(Screen.PrimaryScreen.WorkingArea.Width + panel1.Width, Screen.PrimaryScreen.WorkingArea.Height - this.Height/2);
+            pt.Offset(Screen.PrimaryScreen.WorkingArea.Width + panel1.Width, Screen.PrimaryScreen.WorkingArea.Height + this.Height);
             //Перенос в местоположение верхнего левого угла формы, чтобы её правый нижний угол попал в правый нижний угол экрана
             pt.Offset(-this.Width, -this.Height);
             this.Location = pt;
