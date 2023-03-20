@@ -251,5 +251,64 @@ namespace TEST_button
             }
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            Program.f3.roundButton1.Text= textBox1.Text;
+            Program.f3.roundButton1.Invalidate();
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            Program.f3.roundButton2.Text = textBox3.Text;
+            Program.f3.roundButton2.Invalidate();
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+            Program.f3.roundButton3.Text = textBox5.Text;
+            Program.f3.roundButton3.Invalidate();
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+            Program.f3.roundButton4.Text = textBox7.Text;
+            Program.f3.roundButton4.Invalidate();
+        }
+
+        private void textBox9_TextChanged(object sender, EventArgs e)
+        {
+            Program.f3.roundButton5.Text = textBox9.Text;
+            Program.f3.roundButton5.Invalidate();
+        }
+
+        private void textBox11_TextChanged(object sender, EventArgs e)
+        {
+            Program.f3.roundButton6.Text = textBox11.Text;
+            Program.f3.roundButton6.Invalidate();
+        }
+
+        private void textBox13_TextChanged(object sender, EventArgs e)
+        {
+            Program.f3.roundButton7.Text = textBox13.Text;
+            Program.f3.roundButton7.Invalidate();
+        }
+
+        private void textBox15_TextChanged(object sender, EventArgs e)
+        {
+            Program.f3.roundButton8.Text = textBox15.Text;
+            Program.f3.roundButton8.Invalidate();
+        }
+
+        private void textBox17_TextChanged(object sender, EventArgs e)
+        {
+            Program.f3.roundButton9.Text = textBox17.Text;
+            Program.f3.roundButton9.Invalidate();
+        }
+
+        private void textBox19_TextChanged(object sender, EventArgs e)
+        {
+            Program.f3.roundButton10.Text = textBox19.Text;
+            Program.f3.roundButton10.Invalidate();
+        }
     }
 }

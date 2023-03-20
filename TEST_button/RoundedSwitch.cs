@@ -42,10 +42,10 @@ namespace TEST_Switch
             SwitchToogleColor = Color.Orange;
             SwitchHighlightColor2 = Color.OrangeRed;
             SwitchHighlightForeColor = Color.Black;
-
             SwitchPressedColor = Color.Red;
             SwitchPressedColor2 = Color.Maroon;
             SwitchPressedForeColor = Color.White;
+            IsHighlighted = false;
         }
 
         protected override CreateParams CreateParams

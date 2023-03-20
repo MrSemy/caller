@@ -42,7 +42,7 @@ namespace TEST_button
             radioToogleColor = Color.Orange;
             radioHighlightColor2 = Color.OrangeRed;
             radioHighlightForeColor = Color.Black;
-
+            IsHighlighted= false;
             radioPressedColor = Color.Red;
             radioPressedColor2 = Color.Maroon;
             radioPressedForeColor = Color.White;

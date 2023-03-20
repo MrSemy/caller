@@ -38,7 +38,7 @@ namespace TEST_button
             //Верхний левый угол экрана
             Point pt = Screen.PrimaryScreen.WorkingArea.Location;
             //Перенос в нижний правый угол экрана без панели задач
-            pt.Offset(Screen.PrimaryScreen.WorkingArea.Width + panel1.Width, Screen.PrimaryScreen.WorkingArea.Height + this.Height);
+            pt.Offset(Screen.PrimaryScreen.WorkingArea.Width + panel1.Width, Screen.PrimaryScreen.WorkingArea.Height/2 + this.Height/2);
             //Перенос в местоположение верхнего левого угла формы, чтобы её правый нижний угол попал в правый нижний угол экрана
             pt.Offset(-this.Width, -this.Height);
             this.Location = pt;
@@ -107,28 +107,28 @@ namespace TEST_button
 
         private void roundButton10_Click(object sender, EventArgs e)
         {
-            number = Properties.Settings.Default.button7_number;
+            number = Properties.Settings.Default.button10_number;
             formatted_number = Program.f2.formate_number(number);
             Program.f2.web_call(formatted_number);
         }
 
         private void roundButton9_Click(object sender, EventArgs e)
         {
-            number = Properties.Settings.Default.button8_number;
+            number = Properties.Settings.Default.button9_number;
             formatted_number = Program.f2.formate_number(number);
             Program.f2.web_call(formatted_number);
         }
 
         private void roundButton8_Click(object sender, EventArgs e)
         {
-            number = Properties.Settings.Default.button9_number;
+            number = Properties.Settings.Default.button8_number;
             formatted_number = Program.f2.formate_number(number);
             Program.f2.web_call(formatted_number);
         }
 
         private void roundButton7_Click(object sender, EventArgs e)
         {
-            number = Properties.Settings.Default.button10_number;
+            number = Properties.Settings.Default.button7_number;
             formatted_number = Program.f2.formate_number(number);
             Program.f2.web_call(formatted_number);
         }

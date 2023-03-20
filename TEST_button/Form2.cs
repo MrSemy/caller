@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows;
-//using System.Net.Http;
+using System.Net.Http;
 using System.Net;
 using System.Configuration;
 using System.Net.Http.Headers;
@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using System.Runtime.InteropServices;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace TEST_button
 {
@@ -35,10 +36,8 @@ namespace TEST_button
 
             this.Location = pt;
             this.ShowInTaskbar = false;
-            this.BackColor = Color.FromArgb(59, 64, 69);
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = FlatStyle.Flat;
-            this.button1.BackColor = Color.FromArgb(59, 64, 69);
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = FlatStyle.Flat;
             this.button3.FlatAppearance.BorderSize = 0;
@@ -46,6 +45,8 @@ namespace TEST_button
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatStyle = FlatStyle.Flat;
         }
+
+        static readonly HttpClient client = new HttpClient();
 
         public string formate_number(string text)
         {
@@ -63,7 +64,7 @@ namespace TEST_button
         }
 
         //static readonly HttpClient client = new HttpClient();
-   
+
         /*private CredentialCache GetCredential()
         {
             
@@ -74,11 +75,30 @@ namespace TEST_button
         }
         */
 
-        public async void web_call(string text)
+
+        static async Task TEST(string text)
+        {
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync("http://user:user@192.168.245.240/servlet?number=" + text);
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine(responseBody);
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+        }
+
+        public void web_call(string text)
         {
             if ((text.Length == 11) || (text.Length == 5) || (text.Length == 6) || (text.Length == 13))
             {
+                TEST(text);
                 //string url = "http://192.168.245.240/servlet?number=" + text;
+                
                 //string K = "user:user";
                 /*
                 try
@@ -102,7 +122,7 @@ namespace TEST_button
                 //var content = client.DownloadString(@"http://user:user@192.168.245.240/servlet?number=" + text);
                 //WebRequest wrGETURL = WebRequest.Create("http://192.168.245.240/servlet?p=login&q=login&username=user&pwd=user&jumpto=URI&number=" + text);
 
-                HttpWebRequest.CreateHttp("http://192.168.245.240/servlet?p=login&q=login&username=user&pwd=user&jumpto=URI&number=" + text);
+                //HttpWebRequest.CreateHttp("http://user:user@192.168.245.240/servlet?p=login&q=login&username=user&pwd=user&number=" + text);
                 //System.Net.WebResponse resp = wrGETURL.GetResponse();
                 //System.IO.Stream stream = resp.GetResponseStream();
                 //System.IO.StreamReader sr = new System.IO.StreamReader(stream);
@@ -141,7 +161,7 @@ namespace TEST_button
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
             notifyIcon1.Visible = false;
-            Application.Exit();
+            System.Windows.Forms.Application.Exit();
         }
 
         private async void button4_Click(object sender, EventArgs e)
@@ -156,7 +176,7 @@ namespace TEST_button
                     Program.f3.Invalidate();
                     expectation = false;
                 }
-                button4.BackgroundImage = Image.FromFile(@"C:\Users\Semen\Documents\проекты\TEST_button\TEST_button\add_but2.png");
+                button4.BackgroundImage = System.Drawing.Image.FromFile(@"C:\Users\Semen\Documents\проекты\TEST_button\TEST_button\button_1.png");
                 button4.BackgroundImageLayout = ImageLayout.Zoom;
                 form3_opened = true;
             }
@@ -170,7 +190,7 @@ namespace TEST_button
                     Program.f3.Invalidate();
                     expectation = false;
                 }
-                button4.BackgroundImage = Image.FromFile(@"C:\Users\Semen\Documents\проекты\TEST_button\TEST_button\add_but.png");
+                button4.BackgroundImage = System.Drawing.Image.FromFile(@"C:\Users\Semen\Documents\проекты\TEST_button\TEST_button\button_1_reversed.png");
                 button4.BackgroundImageLayout = ImageLayout.Zoom;
                 form3_opened = false;
             }
