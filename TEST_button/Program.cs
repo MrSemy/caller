@@ -1,21 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
-using System.Net.Mail;
-using System.Net;
 
 namespace TEST_button
 {
     internal static class Program
     {
-
+        //биндим формы для обращения между собой
         public static Form1 f1;
         public static Form2 f2;
         public static Form3 f3;
-        public static Keys key = Properties.Settings.Default.hotkey;
+        public static Keys key = Properties.Settings.Default.hotkey; //забираем кей из настроек
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
@@ -26,7 +20,6 @@ namespace TEST_button
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             var form1 = new Form1();
-            var client = new WebClient();
             Application.Run(form1);
             
 

@@ -7,6 +7,7 @@ namespace TEST_button
     [Flags]
     enum Modifiers : uint
     {
+        //прописываем модификаторы
         ALT = 0x0001,
         CONTROL = 0x0002,
         SHIFT = 0x0004,
@@ -15,6 +16,7 @@ namespace TEST_button
     
     static class HotKeys
     {
+        //класс для чтения хоткеев
         const string USER32 = "user32.dll";
 
         [DllImport(USER32, SetLastError = true)]
@@ -33,6 +35,7 @@ namespace TEST_button
             int Id
             );
 
+        //событие регистрации хоткея
         public static bool Register(Form form1, int id,
                                       Modifiers mod,
                                       Keys key)
@@ -48,6 +51,7 @@ namespace TEST_button
             return RegisterHotKey(form1.Handle, id, mod, key);
         }
 
+        //событие снятия с регистрации
         public static bool Unregister(Form form1, int id)
         {
             if (form1 == null || form1.IsDisposed)

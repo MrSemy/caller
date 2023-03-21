@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing.Drawing2D;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 using System.Windows.Forms;
 
 namespace TEST_Switch
 {
     public class RoundedSwitch : Control
     {
+        //создаём класс закруглённого переключателя
         public Color BackColor2 { get; set; }
         public Color SwitchBorderColor { get; set; }
         public int SwitchRoundRadius { get; set; }
@@ -104,16 +99,7 @@ namespace TEST_Switch
                 e.Graphics.FillEllipse(new SolidBrush(SwitchToogleColor), rect1);
             }
                         
-            
-            
-            /*using (var brush = new SolidBrush(foreColor))
-            {
-                var sf = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center };
-                var rect = new Rectangle(ClientRectangle.X + ClientRectangle.Width + 10, ClientRectangle.Y, ClientRectangle.Width, ClientRectangle.Height);
-                rect.Inflate(-4, -4);
-                e.Graphics.DrawString(Text, Font, brush, rect, sf);
-            }
-           */
+                     
             base.OnPaint(e);
         }
 
@@ -125,7 +111,6 @@ namespace TEST_Switch
         {
             base.OnMouseEnter(e);
             SwitchBorderColor = Color.DarkGreen;
-            //IsHighlighted = true;
             Parent.Invalidate(Bounds, false);
             Invalidate();
         }
@@ -133,8 +118,6 @@ namespace TEST_Switch
         protected override void OnMouseLeave(EventArgs e)
         {
             base.OnMouseLeave(e);
-            //IsHighlighted = false;
-            //IsChecked = false;
             SwitchBorderColor = Color.Black;
             Parent.Invalidate(Bounds, false);
             Invalidate();
@@ -156,7 +139,6 @@ namespace TEST_Switch
             base.OnMouseUp(e);
             Parent.Invalidate(Bounds, false);
             Invalidate();
-            //IsChecked = false;
         }
 
         protected GraphicsPath Path

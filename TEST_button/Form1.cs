@@ -1,22 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
 
 namespace TEST_button
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form //форма настроек
     {
         Form2 form2 = new Form2();
         Form3 form3 = new Form3();
+        //так как хоткеи глобальные, используем WinAPI для работы с хоткеями
         const int WM_HOTKEY = 0x0312;
         const int WM_COPY = 0x0301;
 
@@ -48,11 +43,11 @@ namespace TEST_button
             Program.f1 = this;
             InitializeComponent();
             this.KeyPreview = true;
+            //забираем настройки из базы настроек
             this.roundedSwitch3.IsChecked = Properties.Settings.Default.use_hotkeys;
-            //Program.f2.textBox1.Text = Convert.ToString(Properties.Settings.Default.use_hotkeys);
             this.roundedSwitch2.IsChecked = Properties.Settings.Default.add_buttons;
             this.roundedSwitch1.IsChecked = Properties.Settings.Default.always_hide;
-            if (Properties.Settings.Default.hotkey == Keys.T)
+            if (Properties.Settings.Default.hotkey == Keys.T) 
             {
                 this.customRadioBTN1.IsChecked = true;
                 this.customRadioBTN2.IsChecked = false;
@@ -64,7 +59,7 @@ namespace TEST_button
             }
             if (Properties.Settings.Default.use_hotkeys)
                 HotKeys.Register(this, this.HotKeyId, Modifiers.ALT, Program.key);
-        
+
             this.textBox1.Text = Properties.Settings.Default.button1_name;
             this.textBox3.Text = Properties.Settings.Default.button2_name;
             this.textBox5.Text = Properties.Settings.Default.button3_name;
@@ -85,9 +80,9 @@ namespace TEST_button
             this.textBox16.Text = Properties.Settings.Default.button8_number;
             this.textBox18.Text = Properties.Settings.Default.button9_number;
             this.textBox20.Text = Properties.Settings.Default.button10_number;
-
         }
 
+        //читаем хоткей
         private void read_hotkey()
         {
             int handle = GetForegroundWindow();
@@ -117,12 +112,13 @@ namespace TEST_button
 
         public int HotKeyId { get; set; }
 
+        //кнопка отмена
         private void roundButton2_Click(object sender, EventArgs e)
         {
             this.Hide();
         }
 
-
+        //переключатель использовать хоткеи
         private void roundedSwitch3_MouseUp(object sender, MouseEventArgs e)
         {
             Properties.Settings.Default.use_hotkeys = roundedSwitch3.IsChecked;
@@ -137,10 +133,9 @@ namespace TEST_button
             else
                 HotKeys.Register(this, this.HotKeyId, Modifiers.ALT, Program.key);
 
-
-            //Program.f2.textBox1.Text = Convert.ToString(roundedSwitch3.IsChecked);
         }
-
+        
+        //кнопка сохранить настройки
         private void roundButton1_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.use_hotkeys = roundedSwitch1.IsChecked;
@@ -171,6 +166,7 @@ namespace TEST_button
             
         }
 
+        //переключатель панели быстрого набора
         private void roundedSwitch2_MouseUp(object sender, MouseEventArgs e)
         {
             Properties.Settings.Default.add_buttons = this.roundedSwitch2.IsChecked;
@@ -199,6 +195,7 @@ namespace TEST_button
 
         }
 
+        //переключаетель работы в фоновом режиме
         private void roundedSwitch1_MouseUp(object sender, MouseEventArgs e)
         {
             Properties.Settings.Default.use_hotkeys = this.roundedSwitch1.IsChecked;
@@ -211,6 +208,7 @@ namespace TEST_button
                 form2.Show();
         }
 
+        //параметры загрузки основной формы
         private void Form1_Load(object sender, EventArgs e)
         {
             
@@ -223,12 +221,15 @@ namespace TEST_button
                 HotKeys.Register(this, this.HotKeyId, Modifiers.ALT, Program.key);
             }
         }
+
+        //поведение при закрытии основной формы
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             form2.notifyIcon1.Visible = false;
             HotKeys.Unregister(this, this.HotKeyId);
         }
 
+        //переключатель хоткеев
         private void customRadioBTN1_MouseUp(object sender, MouseEventArgs e)
         {
             if (customRadioBTN1.IsChecked)
@@ -256,6 +257,7 @@ namespace TEST_button
             }
         }
 
+        //привязка к настройкам панели быстрого набора
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             Program.f3.roundButton1.Text= textBox1.Text;

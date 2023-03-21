@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 namespace TEST_button
 {
+    //создаём закруглённый переключатель
     public class CustomRadioBTN : Control
     {
         public Color BackColor2 { get; set; }
@@ -105,7 +106,6 @@ namespace TEST_button
         {
             base.OnMouseEnter(e);
             radioBorderColor = Color.DarkGreen;
-            //IsHighlighted = true;
             Parent.Invalidate(Bounds, false);
             Invalidate();
         }
@@ -113,8 +113,6 @@ namespace TEST_button
         protected override void OnMouseLeave(EventArgs e)
         {
             base.OnMouseLeave(e);
-            //IsHighlighted = false;
-            //IsChecked = false;
             radioBorderColor = Color.Black;
             Parent.Invalidate(Bounds, false);
             Invalidate();
@@ -136,7 +134,6 @@ namespace TEST_button
             base.OnMouseUp(e);
             Parent.Invalidate(Bounds, false);
             Invalidate();
-            //IsChecked = false;
         }
 
         protected GraphicsPath Path
@@ -149,6 +146,7 @@ namespace TEST_button
             }
         }
 
+        
         public static GraphicsPath GetRoundedRectangle(Rectangle rect, int d)
         {
             var gp = new GraphicsPath();

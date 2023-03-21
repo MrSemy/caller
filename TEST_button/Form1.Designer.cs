@@ -35,10 +35,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.roundedSwitch1 = new TEST_Switch.RoundedSwitch();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.roundedSwitch2 = new TEST_Switch.RoundedSwitch();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel17 = new System.Windows.Forms.Panel();
             this.label34 = new System.Windows.Forms.Label();
@@ -107,6 +105,8 @@
             this.roundedSwitch3 = new TEST_Switch.RoundedSwitch();
             this.customRadioBTN2 = new TEST_button.CustomRadioBTN();
             this.customRadioBTN1 = new TEST_button.CustomRadioBTN();
+            this.roundedSwitch2 = new TEST_Switch.RoundedSwitch();
+            this.roundedSwitch1 = new TEST_Switch.RoundedSwitch();
             this.roundButton2 = new TEST_button.RoundButton();
             this.roundButton1 = new TEST_button.RoundButton();
             this.panel1.SuspendLayout();
@@ -194,28 +194,6 @@
             this.panel3.Size = new System.Drawing.Size(864, 84);
             this.panel3.TabIndex = 6;
             // 
-            // roundedSwitch1
-            // 
-            this.roundedSwitch1.BackColor = System.Drawing.Color.Gainsboro;
-            this.roundedSwitch1.BackColor2 = System.Drawing.Color.Silver;
-            this.roundedSwitch1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.roundedSwitch1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.roundedSwitch1.Location = new System.Drawing.Point(23, 26);
-            this.roundedSwitch1.Margin = new System.Windows.Forms.Padding(4);
-            this.roundedSwitch1.Name = "roundedSwitch1";
-            this.roundedSwitch1.Size = new System.Drawing.Size(73, 37);
-            this.roundedSwitch1.SwitchBorderColor = System.Drawing.Color.Black;
-            this.roundedSwitch1.SwitchHighlightColor2 = System.Drawing.Color.OrangeRed;
-            this.roundedSwitch1.SwitchHighlightForeColor = System.Drawing.Color.Black;
-            this.roundedSwitch1.SwitchPressedColor = System.Drawing.Color.Red;
-            this.roundedSwitch1.SwitchPressedColor2 = System.Drawing.Color.Maroon;
-            this.roundedSwitch1.SwitchPressedForeColor = System.Drawing.Color.White;
-            this.roundedSwitch1.SwitchRoundRadius = 30;
-            this.roundedSwitch1.SwitchToogleColor = System.Drawing.Color.Orange;
-            this.roundedSwitch1.TabIndex = 1;
-            this.roundedSwitch1.Text = "TEST";
-            this.roundedSwitch1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.roundedSwitch1_MouseUp);
-            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.label2);
@@ -237,28 +215,6 @@
             this.label2.Size = new System.Drawing.Size(451, 29);
             this.label2.TabIndex = 3;
             this.label2.Text = "Включить кнопки быстрого набора";
-            // 
-            // roundedSwitch2
-            // 
-            this.roundedSwitch2.BackColor = System.Drawing.Color.Gainsboro;
-            this.roundedSwitch2.BackColor2 = System.Drawing.Color.Silver;
-            this.roundedSwitch2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.roundedSwitch2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.roundedSwitch2.Location = new System.Drawing.Point(23, 26);
-            this.roundedSwitch2.Margin = new System.Windows.Forms.Padding(4);
-            this.roundedSwitch2.Name = "roundedSwitch2";
-            this.roundedSwitch2.Size = new System.Drawing.Size(73, 37);
-            this.roundedSwitch2.SwitchBorderColor = System.Drawing.Color.Black;
-            this.roundedSwitch2.SwitchHighlightColor2 = System.Drawing.Color.OrangeRed;
-            this.roundedSwitch2.SwitchHighlightForeColor = System.Drawing.Color.Black;
-            this.roundedSwitch2.SwitchPressedColor = System.Drawing.Color.Red;
-            this.roundedSwitch2.SwitchPressedColor2 = System.Drawing.Color.Maroon;
-            this.roundedSwitch2.SwitchPressedForeColor = System.Drawing.Color.White;
-            this.roundedSwitch2.SwitchRoundRadius = 30;
-            this.roundedSwitch2.SwitchToogleColor = System.Drawing.Color.Orange;
-            this.roundedSwitch2.TabIndex = 1;
-            this.roundedSwitch2.Text = "TEST";
-            this.roundedSwitch2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.roundedSwitch2_MouseUp);
             // 
             // panel6
             // 
@@ -975,7 +931,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label4.Location = new System.Drawing.Point(363, 697);
+            this.label4.Location = new System.Drawing.Point(328, 692);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(75, 29);
@@ -987,7 +943,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label5.Location = new System.Drawing.Point(712, 697);
+            this.label5.Location = new System.Drawing.Point(706, 692);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(73, 29);
@@ -1043,7 +999,7 @@
             this.customRadioBTN2.BackColor = System.Drawing.Color.Gainsboro;
             this.customRadioBTN2.BackColor2 = System.Drawing.Color.Silver;
             this.customRadioBTN2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.customRadioBTN2.Location = new System.Drawing.Point(625, 697);
+            this.customRadioBTN2.Location = new System.Drawing.Point(649, 686);
             this.customRadioBTN2.Margin = new System.Windows.Forms.Padding(4);
             this.customRadioBTN2.Name = "customRadioBTN2";
             this.customRadioBTN2.radioBorderColor = System.Drawing.Color.Black;
@@ -1052,9 +1008,9 @@
             this.customRadioBTN2.radioPressedColor = System.Drawing.Color.Red;
             this.customRadioBTN2.radioPressedColor2 = System.Drawing.Color.Maroon;
             this.customRadioBTN2.radioPressedForeColor = System.Drawing.Color.White;
-            this.customRadioBTN2.radioRoundRadius = 30;
+            this.customRadioBTN2.radioRoundRadius = 35;
             this.customRadioBTN2.radioToogleColor = System.Drawing.Color.Orange;
-            this.customRadioBTN2.Size = new System.Drawing.Size(41, 36);
+            this.customRadioBTN2.Size = new System.Drawing.Size(49, 45);
             this.customRadioBTN2.TabIndex = 11;
             this.customRadioBTN2.Text = "customRadioBTN2";
             this.customRadioBTN2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.customRadioBTN2_MouseUp);
@@ -1064,7 +1020,7 @@
             this.customRadioBTN1.BackColor = System.Drawing.Color.Gainsboro;
             this.customRadioBTN1.BackColor2 = System.Drawing.Color.Silver;
             this.customRadioBTN1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.customRadioBTN1.Location = new System.Drawing.Point(273, 697);
+            this.customRadioBTN1.Location = new System.Drawing.Point(271, 686);
             this.customRadioBTN1.Margin = new System.Windows.Forms.Padding(4);
             this.customRadioBTN1.Name = "customRadioBTN1";
             this.customRadioBTN1.radioBorderColor = System.Drawing.Color.Black;
@@ -1073,12 +1029,56 @@
             this.customRadioBTN1.radioPressedColor = System.Drawing.Color.Red;
             this.customRadioBTN1.radioPressedColor2 = System.Drawing.Color.Maroon;
             this.customRadioBTN1.radioPressedForeColor = System.Drawing.Color.White;
-            this.customRadioBTN1.radioRoundRadius = 30;
+            this.customRadioBTN1.radioRoundRadius = 35;
             this.customRadioBTN1.radioToogleColor = System.Drawing.Color.Orange;
-            this.customRadioBTN1.Size = new System.Drawing.Size(44, 36);
+            this.customRadioBTN1.Size = new System.Drawing.Size(49, 45);
             this.customRadioBTN1.TabIndex = 9;
             this.customRadioBTN1.Text = "customRadioBTN1";
             this.customRadioBTN1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.customRadioBTN1_MouseUp);
+            // 
+            // roundedSwitch2
+            // 
+            this.roundedSwitch2.BackColor = System.Drawing.Color.Gainsboro;
+            this.roundedSwitch2.BackColor2 = System.Drawing.Color.Silver;
+            this.roundedSwitch2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.roundedSwitch2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.roundedSwitch2.Location = new System.Drawing.Point(23, 26);
+            this.roundedSwitch2.Margin = new System.Windows.Forms.Padding(4);
+            this.roundedSwitch2.Name = "roundedSwitch2";
+            this.roundedSwitch2.Size = new System.Drawing.Size(73, 37);
+            this.roundedSwitch2.SwitchBorderColor = System.Drawing.Color.Black;
+            this.roundedSwitch2.SwitchHighlightColor2 = System.Drawing.Color.OrangeRed;
+            this.roundedSwitch2.SwitchHighlightForeColor = System.Drawing.Color.Black;
+            this.roundedSwitch2.SwitchPressedColor = System.Drawing.Color.Red;
+            this.roundedSwitch2.SwitchPressedColor2 = System.Drawing.Color.Maroon;
+            this.roundedSwitch2.SwitchPressedForeColor = System.Drawing.Color.White;
+            this.roundedSwitch2.SwitchRoundRadius = 30;
+            this.roundedSwitch2.SwitchToogleColor = System.Drawing.Color.Orange;
+            this.roundedSwitch2.TabIndex = 1;
+            this.roundedSwitch2.Text = "TEST";
+            this.roundedSwitch2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.roundedSwitch2_MouseUp);
+            // 
+            // roundedSwitch1
+            // 
+            this.roundedSwitch1.BackColor = System.Drawing.Color.Gainsboro;
+            this.roundedSwitch1.BackColor2 = System.Drawing.Color.Silver;
+            this.roundedSwitch1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.roundedSwitch1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.roundedSwitch1.Location = new System.Drawing.Point(23, 26);
+            this.roundedSwitch1.Margin = new System.Windows.Forms.Padding(4);
+            this.roundedSwitch1.Name = "roundedSwitch1";
+            this.roundedSwitch1.Size = new System.Drawing.Size(73, 37);
+            this.roundedSwitch1.SwitchBorderColor = System.Drawing.Color.Black;
+            this.roundedSwitch1.SwitchHighlightColor2 = System.Drawing.Color.OrangeRed;
+            this.roundedSwitch1.SwitchHighlightForeColor = System.Drawing.Color.Black;
+            this.roundedSwitch1.SwitchPressedColor = System.Drawing.Color.Red;
+            this.roundedSwitch1.SwitchPressedColor2 = System.Drawing.Color.Maroon;
+            this.roundedSwitch1.SwitchPressedForeColor = System.Drawing.Color.White;
+            this.roundedSwitch1.SwitchRoundRadius = 30;
+            this.roundedSwitch1.SwitchToogleColor = System.Drawing.Color.Orange;
+            this.roundedSwitch1.TabIndex = 1;
+            this.roundedSwitch1.Text = "TEST";
+            this.roundedSwitch1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.roundedSwitch1_MouseUp);
             // 
             // roundButton2
             // 

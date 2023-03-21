@@ -5,13 +5,15 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
+using System.Security.Cryptography.X509Certificates;
+using System.Net.Security;
 
 namespace TEST_button
 {
 
     public partial class Form2 : Form
     {
-
+        //объявляем переменные для дальнейшей логики
         bool expectation;
         bool form3_opened = false;
         bool form1_opened = false;
@@ -19,10 +21,10 @@ namespace TEST_button
         {
             InitializeComponent();
             Program.f2 = this;
+            //выставляем начальную позицию формы в зависимости от настроек
             this.StartPosition = FormStartPosition.Manual;
             Point pt = Screen.PrimaryScreen.WorkingArea.Location;
             pt.Offset(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
-            //pt.Offset(-this.Width, -this.Height);
             if (Properties.Settings.Default.add_buttons)
             {
                 pt.Offset(-this.Width, -this.Height);
@@ -33,6 +35,7 @@ namespace TEST_button
             }
             this.Location = pt;
             this.ShowInTaskbar = false;
+            //настройки стилей кнопок
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = FlatStyle.Flat;
             this.button2.FlatAppearance.BorderSize = 0;
@@ -43,6 +46,7 @@ namespace TEST_button
             this.button4.FlatStyle = FlatStyle.Flat;
         }
 
+        //метод для форматирования номера (приведение в нужный вид)
         public string formate_number(string text)
         {
             Regex regex = new Regex(@"\D");
@@ -58,7 +62,7 @@ namespace TEST_button
             return formatted_digits;
         }
 
-
+        //метод для совершения звонка по http
         public void web_call(string text)
         {
             if ((text.Length == 11) || (text.Length == 5) || (text.Length == 6) || (text.Length == 13))
@@ -68,7 +72,9 @@ namespace TEST_button
                 client.Credentials = new System.Net.NetworkCredential("user", "user");
                 try
                 {
-                    byte[] response = client.DownloadData("http://192.168.245.240/servlet?number=" + text);
+                    ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
+                    System.Net.ServicePointManager.ServerCertificateValidationCallback += (send, certificate, chain, sslPolicyErrors) => { return true; };
+                    byte[] response = client.DownloadData("https://192.168.245.240/servlet?number=" + text);
                     notifyIcon1.ShowBalloonTip(2, "Статус", "Вызываю номер " + text, ToolTipIcon.Info);
                 }
                 catch (WebException e)
@@ -81,7 +87,7 @@ namespace TEST_button
             return;
         }
 
-
+        //кнопка "звонить"
         private void button1_Click(object sender, EventArgs e)
         {
             string text;
@@ -91,12 +97,14 @@ namespace TEST_button
             textBox1.Text = null;
         }
 
+        //кнопка "свернуть"
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
             notifyIcon1.ShowBalloonTip(10, "Статус", "Работа в фоновом режиме", ToolTipIcon.Info);
         }
 
+        //настройка поведения в трее
         private void развернутьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Show();
@@ -108,6 +116,7 @@ namespace TEST_button
             Program.f1.Close();
         }
 
+        //кнопка "раскрыть панель быстрого набора"
         private async void button4_Click(object sender, EventArgs e)
         {
             if (!form3_opened)
@@ -140,6 +149,7 @@ namespace TEST_button
             }
         }
 
+        //кнопка "настройки"
         private void button3_Click(object sender, EventArgs e)
         {
             if (form1_opened)
@@ -158,11 +168,13 @@ namespace TEST_button
 
         }
 
+        //параметры загрузки формы (без этого грузится чуть большего размера почему-то)
         private void Form2_Load(object sender, EventArgs e)
         {
             this.Height = 32;
         }
 
+        //поведение при нажатии кнопки Enter в textbox
         private void textBox1_KeyUp(object sender, KeyEventArgs e)
         {
             if((e.KeyCode == Keys.Enter) & (textBox1.Text != null)) 
