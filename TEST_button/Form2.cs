@@ -1,24 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Windows;
-using System.Net.Http;
 using System.Net;
-using System.Configuration;
-using System.Net.Http.Headers;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
-using System.Runtime.InteropServices;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace TEST_button
 {
+
     public partial class Form2 : Form
     {
 
@@ -32,8 +22,15 @@ namespace TEST_button
             this.StartPosition = FormStartPosition.Manual;
             Point pt = Screen.PrimaryScreen.WorkingArea.Location;
             pt.Offset(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
-            pt.Offset(-this.Width, -this.Height);
-
+            //pt.Offset(-this.Width, -this.Height);
+            if (Properties.Settings.Default.add_buttons)
+            {
+                pt.Offset(-this.Width, -this.Height);
+            }
+            else
+            {
+                pt.Offset(-this.Width + this.button4.Width, -this.Height);
+            }
             this.Location = pt;
             this.ShowInTaskbar = false;
             this.button1.FlatAppearance.BorderSize = 0;
@@ -45,8 +42,6 @@ namespace TEST_button
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatStyle = FlatStyle.Flat;
         }
-
-        static readonly HttpClient client = new HttpClient();
 
         public string formate_number(string text)
         {
@@ -63,76 +58,25 @@ namespace TEST_button
             return formatted_digits;
         }
 
-        //static readonly HttpClient client = new HttpClient();
-
-        /*private CredentialCache GetCredential()
-        {
-            
-            //ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3;
-            CredentialCache credentialCache = new CredentialCache();
-            credentialCache.Add(new System.Uri("http://192.168.245.240/servlet?number="), "Basic", new NetworkCredential("user", "user"));
-            return credentialCache;
-        }
-        */
-
-
-        static async Task TEST(string text)
-        {
-            try
-            {
-                HttpResponseMessage response = await client.GetAsync("http://user:user@192.168.245.240/servlet?number=" + text);
-                response.EnsureSuccessStatusCode();
-                string responseBody = await response.Content.ReadAsStringAsync();
-                Console.WriteLine(responseBody);
-            }
-            catch (HttpRequestException e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
-        }
 
         public void web_call(string text)
         {
             if ((text.Length == 11) || (text.Length == 5) || (text.Length == 6) || (text.Length == 13))
             {
-                TEST(text);
-                //string url = "http://192.168.245.240/servlet?number=" + text;
-                
-                //string K = "user:user";
-                /*
+
+                var client = new WebClient();
+                client.Credentials = new System.Net.NetworkCredential("user", "user");
                 try
                 {
-                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("user", "user");
-                    HttpResponseMessage response = await client.GetAsync("http://192.168.245.240/servlet?number=" + text);
-                    response.EnsureSuccessStatusCode();
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine(responseBody);
+                    byte[] response = client.DownloadData("http://192.168.245.240/servlet?number=" + text);
+                    notifyIcon1.ShowBalloonTip(2, "Статус", "Вызываю номер " + text, ToolTipIcon.Info);
                 }
-                catch(HttpRequestException e)
+                catch (WebException e)
                 {
+                    MessageBox.Show("Аппарат недоступен", "Уведомление", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Console.WriteLine(e.Message);
                 }
-                */
-                /*var client = new WebClient();
-                client.Credentials = new System.Net.NetworkCredential("user", "user");
-                WebException exception = null;
-                byte[] response = client.DownloadData("http://192.168.245.240/servlet?number=" + text);*/
-                
-                //var content = client.DownloadString(@"http://user:user@192.168.245.240/servlet?number=" + text);
-                //WebRequest wrGETURL = WebRequest.Create("http://192.168.245.240/servlet?p=login&q=login&username=user&pwd=user&jumpto=URI&number=" + text);
 
-                //HttpWebRequest.CreateHttp("http://user:user@192.168.245.240/servlet?p=login&q=login&username=user&pwd=user&number=" + text);
-                //System.Net.WebResponse resp = wrGETURL.GetResponse();
-                //System.IO.Stream stream = resp.GetResponseStream();
-                //System.IO.StreamReader sr = new System.IO.StreamReader(stream);
-                //string s = sr.ReadToEnd();
-                //Console.WriteLine(s);
-                //HttpWebRequest.Create("http://localhost/call_to=/" + text);
-                /*WebRequest request = WebRequest.Create(url);
-                request.Credentials = GetCredential();
-                request.PreAuthenticate = true;
-                notifyIcon1.ShowBalloonTip(10, "Статус", "Вызываю номер " + text, ToolTipIcon.Info);*/
             }
             return;
         }
@@ -161,7 +105,7 @@ namespace TEST_button
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
             notifyIcon1.Visible = false;
-            System.Windows.Forms.Application.Exit();
+            Program.f1.Close();
         }
 
         private async void button4_Click(object sender, EventArgs e)
@@ -216,9 +160,19 @@ namespace TEST_button
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            //this.Width = 232;
             this.Height = 32;
+        }
 
+        private void textBox1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if((e.KeyCode == Keys.Enter) & (textBox1.Text != null)) 
+            {
+                string text;
+                text = textBox1.Text;
+                string formatted_digits = formate_number(text);
+                web_call(formatted_digits);
+                textBox1.Text = null;
+            }
         }
     }
 }

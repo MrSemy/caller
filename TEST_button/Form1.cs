@@ -49,8 +49,9 @@ namespace TEST_button
             InitializeComponent();
             this.KeyPreview = true;
             this.roundedSwitch3.IsChecked = Properties.Settings.Default.use_hotkeys;
+            //Program.f2.textBox1.Text = Convert.ToString(Properties.Settings.Default.use_hotkeys);
             this.roundedSwitch2.IsChecked = Properties.Settings.Default.add_buttons;
-            this.roundedSwitch1.IsChecked = Properties.Settings.Default.use_hotkeys;
+            this.roundedSwitch1.IsChecked = Properties.Settings.Default.always_hide;
             if (Properties.Settings.Default.hotkey == Keys.T)
             {
                 this.customRadioBTN1.IsChecked = true;
@@ -61,7 +62,10 @@ namespace TEST_button
                 this.customRadioBTN2.IsChecked = true;
                 this.customRadioBTN1.IsChecked = false;
             }
-                this.textBox1.Text = Properties.Settings.Default.button1_name;
+            if (Properties.Settings.Default.use_hotkeys)
+                HotKeys.Register(this, this.HotKeyId, Modifiers.ALT, Program.key);
+        
+            this.textBox1.Text = Properties.Settings.Default.button1_name;
             this.textBox3.Text = Properties.Settings.Default.button2_name;
             this.textBox5.Text = Properties.Settings.Default.button3_name;
             this.textBox7.Text = Properties.Settings.Default.button4_name;
@@ -95,11 +99,9 @@ namespace TEST_button
             IntPtr FocusedWindowEx = GetFocus();
             SendMessage(FocusedWindowEx, WM_COPY, IntPtr.Zero, IntPtr.Zero);
             string number_from_buffer = Clipboard.GetText();
-            Program.f2.textBox1.Text = number_from_buffer;
             AttachThreadInput(SelectedThreadId, CurrentThreadId, false);
             string formatted_number_from_buf = Program.f2.formate_number(number_from_buffer);
             Program.f2.web_call(formatted_number_from_buf);
-
             return;
         }
 
@@ -123,7 +125,7 @@ namespace TEST_button
 
         private void roundedSwitch3_MouseUp(object sender, MouseEventArgs e)
         {
-            Properties.Settings.Default.use_hotkeys = this.roundedSwitch3.IsChecked;
+            Properties.Settings.Default.use_hotkeys = roundedSwitch3.IsChecked;
             if (!roundedSwitch3.IsChecked)
                 {
                 HotKeys.Unregister(this, this.HotKeyId);
@@ -135,13 +137,16 @@ namespace TEST_button
             else
                 HotKeys.Register(this, this.HotKeyId, Modifiers.ALT, Program.key);
 
+
+            //Program.f2.textBox1.Text = Convert.ToString(roundedSwitch3.IsChecked);
         }
 
         private void roundButton1_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.use_hotkeys = this.roundedSwitch3.IsChecked;
-            Properties.Settings.Default.add_buttons = this.roundedSwitch2.IsChecked;
-            Properties.Settings.Default.use_hotkeys = this.roundedSwitch1.IsChecked;
+            Properties.Settings.Default.use_hotkeys = roundedSwitch1.IsChecked;
+            Properties.Settings.Default.add_buttons = roundedSwitch2.IsChecked;
+            Properties.Settings.Default.use_hotkeys = roundedSwitch3.IsChecked;
+            Properties.Settings.Default.button1_name = this.textBox1.Text;
             Properties.Settings.Default.button2_name = this.textBox3.Text;
             Properties.Settings.Default.button3_name = this.textBox5.Text;
             Properties.Settings.Default.button4_name = this.textBox7.Text;
@@ -161,8 +166,9 @@ namespace TEST_button
             Properties.Settings.Default.button8_number = this.textBox16.Text;
             Properties.Settings.Default.button9_number = this.textBox18.Text;
             Properties.Settings.Default.button10_number = this.textBox20.Text;
-            MessageBox.Show("Настройки сохранены", "Уведомление", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Properties.Settings.Default.Save();
+            MessageBox.Show("Настройки сохранены", "Уведомление", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
         }
 
         private void roundedSwitch2_MouseUp(object sender, MouseEventArgs e)
@@ -170,8 +176,6 @@ namespace TEST_button
             Properties.Settings.Default.add_buttons = this.roundedSwitch2.IsChecked;
             if (this.roundedSwitch2.IsChecked)
             {
-                form2.Width = 233;
-                form2.Height = 32;
                 form2.button4.Visible = true;
                 form2.button4.Enabled = true;
                 Point pt = Screen.PrimaryScreen.WorkingArea.Location;
@@ -183,13 +187,11 @@ namespace TEST_button
             }
             else
             {
-                form2.Width = 199;
-                form2.Height = 32;
                 form2.button4.Visible = false;
                 form2.button4.Enabled = false;
                 Point pt = Screen.PrimaryScreen.WorkingArea.Location;
                 pt.Offset(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
-                pt.Offset(-form2.Width, -form2.Height);
+                pt.Offset(-form2.Width+form2.button4.Width, -form2.Height);
                 form2.Location = pt;
                 form2.Invalidate();
                 Program.f3.Visible = false;
@@ -201,7 +203,10 @@ namespace TEST_button
         {
             Properties.Settings.Default.use_hotkeys = this.roundedSwitch1.IsChecked;
             if (roundedSwitch1.IsChecked)
+            {
                 form2.Hide();
+                Program.f2.notifyIcon1.ShowBalloonTip(10, "Статус", "Работа в фоновом режиме", ToolTipIcon.Info);
+            }
             else
                 form2.Show();
         }
