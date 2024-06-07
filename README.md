@@ -7,3 +7,5 @@ ___
 # Установка
 Качаем проект в нужную директорию и компилируем через VisualStudio. На выходе имеем файл .msi, который можно развернуть на любой Windows Машине.  В настройках необходимо указать IP адрес вашего IP телефона <br>
 
+# Демонстрация
+![Image alt](https://github.com/MrSemy/caller/blob/master/TEST_button/Screenshot.png)
